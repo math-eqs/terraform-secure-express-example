@@ -1,0 +1,30 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your values
+
+# Auth0 Configuration (for Terraform Provider)
+# You need to create an M2M app in Auth0 Dashboard first with Management API scopes:
+# - read:clients, create:clients, update:clients
+# - read:resource_servers, create:resource_servers, update:resource_servers
+# - read:client_grants, create:client_grants, update:client_grants
+auth0_domain        = "your-tenant.auth0.com"
+auth0_client_id     = "your-management-api-client-id"
+auth0_client_secret = "your-management-api-client-secret"
+
+# Application Configuration
+app_name        = "My Express App"
+app_environment = "dev"
+
+# Callback URLs for your application
+allowed_callback_urls = [
+  "http://localhost:3000/callback",
+  "https://yourdomain.com/callback"
+]
+
+allowed_logout_urls = [
+  "http://localhost:3000",
+  "https://yourdomain.com"
+]
+
+# AWS Configuration
+aws_region  = "us-east-1"
+secret_name = "auth0-app-credentials"
