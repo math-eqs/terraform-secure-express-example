@@ -15,6 +15,13 @@ variable "auth0_client_secret" {
   sensitive   = true
 }
 
+# List of Auth0 client IDs to fetch and sync to AWS Secrets Manager
+variable "auth0_client_ids_to_sync" {
+  description = "List of Auth0 client IDs to fetch from Auth0 and create secrets for in AWS Secrets Manager"
+  type        = list(string)
+  default     = []
+}
+
 # Application Configuration Variables
 variable "app_name" {
   description = "Name for the Auth0 application"
@@ -51,4 +58,10 @@ variable "secret_name" {
   description = "Name for the AWS Secrets Manager secret"
   type        = string
   default     = "auth0-app-credentials"
+}
+
+variable "api_audience" {
+  description = "Auth0 API audience/identifier that the client can access"
+  type        = string
+  default     = "https://api.example.com"
 }
